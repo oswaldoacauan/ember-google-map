@@ -5,12 +5,14 @@ module.exports = {
   name: 'ember-google-map',
 
   contentFor: function (type, config) {
-    var src, content = '', google = config.googleMap || {}, params = [], apiKey;
+    var protocol, src, content = '', google = config.googleMap || {}, params = [], apiKey;
     if (type === 'head') {
       src = "//maps.googleapis.com/maps/api/js";
       
       protocol = google.protocol || '';
-      src = protocol + src;
+      if(protocol !== '') {
+        src = protocol + ':' + src; 
+      }
       
       // shouldn't need encoding, but who knows what version format it can handle
       params.push('v=' + encodeURIComponent(google.version || '3'));
