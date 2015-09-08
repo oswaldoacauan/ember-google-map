@@ -96,6 +96,10 @@ var GoogleObjectMixin = Ember.Mixin.create({
       optionsOverrides = arguments[1];
     }
     opt = Ember.merge(opt, optionsOverrides);
+    
+    /* TODO: Fix the options parser and not set it here */
+    opt.disableDefaultUI = true;
+    
     Ember.debug(fmt(
       '[google-maps] creating new %@: %@', this.get('googleName'), opt
     ));
