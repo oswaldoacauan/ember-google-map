@@ -8,6 +8,10 @@ module.exports = {
     var src, content = '', google = config.googleMap || {}, params = [], apiKey;
     if (type === 'head') {
       src = "//maps.googleapis.com/maps/api/js";
+      
+      protocol = google.protocol || '';
+      src = protocol + src;
+      
       // shouldn't need encoding, but who knows what version format it can handle
       params.push('v=' + encodeURIComponent(google.version || '3'));
       // grab either API key or client ID
